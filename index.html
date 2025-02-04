@@ -6,7 +6,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f4f9;
+      background-color: #fdf6e3;
       margin: 0;
       padding: 20px;
       display: flex;
@@ -16,11 +16,12 @@
     }
     .container {
       background: #fff;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
       padding: 20px;
       max-width: 600px;
       width: 100%;
+      border: 2px solid #eee;
     }
     h1, h2 {
       text-align: center;
@@ -31,23 +32,18 @@
       padding: 15px;
       border: 1px solid #ddd;
       border-radius: 5px;
-      background-color: #fafafa;
-    }
-    .clue-image, .home-image {
-      max-width: 100%;
-      border-radius: 5px;
-      margin-top: 10px;
+      background-color: #f9f9f9;
     }
     .hint {
-      color: #999;
+      color: #757575;
       font-size: 0.9em;
     }
     .correct {
-      color: green;
+      color: #28a745;
       font-weight: bold;
     }
     .incorrect {
-      color: red;
+      color: #dc3545;
       font-weight: bold;
     }
     .answer-input {
@@ -67,6 +63,7 @@
       border: none;
       border-radius: 5px;
       margin-top: 10px;
+      transition: background-color 0.3s;
     }
     .submit-btn:hover {
       background-color: #0056b3;
@@ -80,7 +77,6 @@
 
 <div class="container">
   <h1>Edinburgh Treasure Hunt</h1>
- <br>
   <p style="text-align:center;">Solve each clue in order. Type the correct answer to reveal the next clue!</p>
 
   <div id="app"></div>
@@ -95,8 +91,7 @@ const puzzleData = [
            Local lore says some spit for good luck, if you believe.<br>
            Find this symbol of old tales, then we'll leave.`,
     answer: "heart of midlothian",
-    hint: "Some people spit on it for good luck; it's right on the Royal Mile.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/3/3e/Heart_of_Midlothian.jpg"
+    hint: "Some people spit on it for good luck; it's right on the Royal Mile."
   },
   {
     clue: `2) Near that heart stands a grand building crowned with stone,<br>
@@ -104,8 +99,7 @@ const puzzleData = [
            Step inside if you like to admire its art,<br>
            Then seek a faithful friend for the next part.`,
     answer: "st giles cathedral",
-    hint: "It has a unique 'crown' on top and is a famous cathedral on the Royal Mile.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/2/2e/St_Giles%27_Cathedral%2C_Edinburgh.jpg"
+    hint: "It has a unique 'crown' on top and is a famous cathedral on the Royal Mile."
   },
   {
     clue: `3) A little statue of a loyal friend, perched near a graveyard gate,<br>
@@ -113,8 +107,7 @@ const puzzleData = [
            Tradition says his shiny nose might bring some luck,<br>
            Pat the pup gently, then off to a former market for your next struck.`,
     answer: "greyfriars bobby",
-    hint: "Bronze statue of a dog with a polished nose.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/7/71/Greyfriars_Bobby.jpg"
+    hint: "Bronze statue of a dog with a polished nose."
   },
   {
     clue: `4) Shops and pubs line this lively square beneath a fortress high,<br>
@@ -122,8 +115,7 @@ const puzzleData = [
            Now it bustles with laughter, food, and song,<br>
            Take a break if you wish, then climb to the fortress so strong.`,
     answer: "grassmarket",
-    hint: "Open area below the castle, historically a marketplace.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/0/0d/Grassmarket%2C_Edinburgh.jpg"
+    hint: "Open area below the castle, historically a marketplace."
   },
   {
     clue: `5) A mighty stronghold stands upon volcanic rock,<br>
@@ -131,8 +123,7 @@ const puzzleData = [
            A cannon that fires when the clock strikes one,<br>
            Stand on its esplanade to see the city under the sun.`,
     answer: "edinburgh castle",
-    hint: "Iconic fortress with a One O'Clock Gun ritual.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/e/ee/Edinburgh_Castle_from_the_south_east.JPG"
+    hint: "Iconic fortress with a One O'Clock Gun ritual."
   },
   {
     clue: `6) Descend to a curving street of vibrant hue,<br>
@@ -140,8 +131,7 @@ const puzzleData = [
            Colorful facades and quirky shops, a place of delight,<br>
            Snap a picture, then on to the next scenic sight.`,
     answer: "victoria street",
-    hint: "Brightly painted street rumored to be the inspiration for Diagon Alley.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/7/72/Victoria_Street_Edinburgh.jpg"
+    hint: "Brightly painted street rumored to be the inspiration for Diagon Alley."
   },
   {
     clue: `7) For the final stop, climb a hill at the city's edge,<br>
@@ -149,8 +139,7 @@ const puzzleData = [
            Gaze at skyline and sea from this vantage so grand,<br>
            Reflect on your adventure, hand in hand.`,
     answer: "calton hill",
-    hint: "Hill with an unfinished monument (resembles Greek columns) offering panoramic views.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/3/30/Calton_Hill_from_Holyrood_Park.jpg"
+    hint: "Hill with an unfinished monument (resembles Greek columns) offering panoramic views."
   }
 ];
 
@@ -169,7 +158,6 @@ function renderClue(index) {
   document.getElementById('app').innerHTML = `
     <div class="clue-box">
       <p>${clueObj.clue}</p>
-      <img src="${clueObj.image}" alt="Clue Image" class="clue-image">
       <input id="answerInput" class="answer-input" type="text" placeholder="Type your answer..." />
       <button id="submitBtn" class="submit-btn">Submit</button>
       <p id="feedback" class="feedback"></p>
