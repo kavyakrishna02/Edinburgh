@@ -6,20 +6,32 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 20px;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      padding: 20px;
       max-width: 600px;
+      width: 100%;
     }
     h1, h2 {
       text-align: center;
+      color: #333;
     }
     .clue-box {
       margin: 20px 0;
       padding: 15px;
       border: 1px solid #ddd;
       border-radius: 5px;
-    }
-    .hidden {
-      display: none;
+      background-color: #fafafa;
     }
     .hint {
       color: #999;
@@ -35,27 +47,40 @@
     }
     .answer-input {
       margin-top: 10px;
-      padding: 8px;
-      width: 80%;
+      padding: 10px;
+      width: calc(100% - 30px);
       font-size: 1em;
+      border: 1px solid #ddd;
+      border-radius: 5px;
     }
     .submit-btn {
-      padding: 8px 16px;
+      padding: 10px 20px;
       font-size: 1em;
       cursor: pointer;
-      margin-left: 5px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+    .submit-btn:hover {
+      background-color: #0056b3;
+    }
+    .feedback {
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
 
-<h1>Edinburgh Treasure Hunt</h1>
-<p style="text-align:center;">Solve each clue in order. Type the correct answer to reveal the next clue!</p>
+<div class="container">
+  <h1>Edinburgh Treasure Hunt</h1>
+  <p style="text-align:center;">Solve each clue in order. Type the correct answer to reveal the next clue!</p>
 
-<div id="app"></div>
+  <div id="app"></div>
+</div>
 
 <script>
-// 1. Customize your clues, answers, and hints below:
 const puzzleData = [
   {
     clue: `Hi Chinmay! Welcome to Scotland!<br>What a place to celebrate your special milestones! Congratulations on your birthday and first wedding anniversary! Hope you enjoy this present by Mrs. Chaudhary:)<br>
@@ -64,7 +89,7 @@ const puzzleData = [
            On the ground you'll spot a heart set in stone.<br>
            Local lore says some spit for good luck, if you believe.<br>
            Find this symbol of old tales, then we'll leave.`,
-    answer: "heart of midlothian",  // Allowed answer
+    answer: "heart of midlothian",
     hint: "Some people spit on it for good luck; it's right on the Royal Mile."
   },
   {
@@ -117,11 +142,9 @@ const puzzleData = [
   }
 ];
 
-// 2. Core logic: displays each clue, checks answer, shows next clue if correct.
 let currentClueIndex = 0;
 
 function renderClue(index) {
-  // If we're out of clues, show a completion message
   if (index >= puzzleData.length) {
     document.getElementById('app').innerHTML = `
       <h2>Congratulations, you've solved all the clues!</h2>
@@ -131,22 +154,19 @@ function renderClue(index) {
   }
 
   const clueObj = puzzleData[index];
-  // Setup the HTML for the current clue
   document.getElementById('app').innerHTML = `
     <div class="clue-box">
       <p>${clueObj.clue}</p>
       <input id="answerInput" class="answer-input" type="text" placeholder="Type your answer..." />
       <button id="submitBtn" class="submit-btn">Submit</button>
-      <p id="feedback" style="margin-top:10px;"></p>
+      <p id="feedback" class="feedback"></p>
     </div>
   `;
 
-  // Add functionality to the Submit button
   document.getElementById('submitBtn').addEventListener('click', () => {
     checkAnswer();
   });
 
-  // Also allow pressing "Enter" to submit
   document.getElementById('answerInput').addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
       checkAnswer();
@@ -161,7 +181,6 @@ function renderClue(index) {
     if (userAnswer === correctAnswer) {
       feedbackEl.innerHTML = `<span class="correct">Correct! Moving on...</span>`;
       setTimeout(() => {
-        // Load next clue
         currentClueIndex++;
         renderClue(currentClueIndex);
       }, 1000);
@@ -174,7 +193,6 @@ function renderClue(index) {
   }
 }
 
-// Initialize the first clue on page load
 renderClue(currentClueIndex);
 </script>
 
