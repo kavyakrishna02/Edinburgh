@@ -33,7 +33,7 @@
       border-radius: 5px;
       background-color: #fafafa;
     }
-    .clue-image {
+    .clue-image, .home-image {
       max-width: 100%;
       border-radius: 5px;
       margin-top: 10px;
@@ -80,6 +80,7 @@
 
 <div class="container">
   <h1>Edinburgh Treasure Hunt</h1>
+  <img src="https://images.app.goo.gl/bhfMw6v6wxkPTjou7" alt="Lovers in Windy Scotland" class="home-image">
   <p style="text-align:center;">Solve each clue in order. Type the correct answer to reveal the next clue!</p>
 
   <div id="app"></div>
@@ -89,14 +90,13 @@
 const puzzleData = [
   {
     clue: `Hi Chinmay! Welcome to Scotland!<br>What a place to celebrate your special milestones! Congratulations on your birthday and first wedding anniversary! Hope you enjoy this present by Mrs. Chaudhary:)<br>
-
           1) Begin on a historic street once traveled by royalty.<br>
            On the ground you'll spot a heart set in stone.<br>
            Local lore says some spit for good luck, if you believe.<br>
            Find this symbol of old tales, then we'll leave.`,
     answer: "heart of midlothian",
     hint: "Some people spit on it for good luck; it's right on the Royal Mile.",
-    image: "https://example.com/heart-of-midlothian.jpg" // Replace with actual image URL
+    image: "https://upload.wikimedia.org/wikipedia/commons/3/3e/Heart_of_Midlothian.jpg"
   },
   {
     clue: `2) Near that heart stands a grand building crowned with stone,<br>
@@ -105,7 +105,7 @@ const puzzleData = [
            Then seek a faithful friend for the next part.`,
     answer: "st giles cathedral",
     hint: "It has a unique 'crown' on top and is a famous cathedral on the Royal Mile.",
-    image: "https://example.com/st-giles-cathedral.jpg" // Replace with actual image URL
+    image: "https://upload.wikimedia.org/wikipedia/commons/2/2e/St_Giles%27_Cathedral%2C_Edinburgh.jpg"
   },
   {
     clue: `3) A little statue of a loyal friend, perched near a graveyard gate,<br>
@@ -114,7 +114,7 @@ const puzzleData = [
            Pat the pup gently, then off to a former market for your next struck.`,
     answer: "greyfriars bobby",
     hint: "Bronze statue of a dog with a polished nose.",
-    image: "https://example.com/greyfriars-bobby.jpg" // Replace with actual image URL
+    image: "https://upload.wikimedia.org/wikipedia/commons/7/71/Greyfriars_Bobby.jpg"
   },
   {
     clue: `4) Shops and pubs line this lively square beneath a fortress high,<br>
@@ -123,7 +123,7 @@ const puzzleData = [
            Take a break if you wish, then climb to the fortress so strong.`,
     answer: "grassmarket",
     hint: "Open area below the castle, historically a marketplace.",
-    image: "https://example.com/grassmarket.jpg" // Replace with actual image URL
+    image: "https://upload.wikimedia.org/wikipedia/commons/0/0d/Grassmarket%2C_Edinburgh.jpg"
   },
   {
     clue: `5) A mighty stronghold stands upon volcanic rock,<br>
@@ -132,7 +132,7 @@ const puzzleData = [
            Stand on its esplanade to see the city under the sun.`,
     answer: "edinburgh castle",
     hint: "Iconic fortress with a One O'Clock Gun ritual.",
-    image: "https://example.com/edinburgh-castle.jpg" // Replace with actual image URL
+    image: "https://upload.wikimedia.org/wikipedia/commons/e/ee/Edinburgh_Castle_from_the_south_east.JPG"
   },
   {
     clue: `6) Descend to a curving street of vibrant hue,<br>
@@ -141,7 +141,7 @@ const puzzleData = [
            Snap a picture, then on to the next scenic sight.`,
     answer: "victoria street",
     hint: "Brightly painted street rumored to be the inspiration for Diagon Alley.",
-    image: "https://example.com/victoria-street.jpg" // Replace with actual image URL
+    image: "https://upload.wikimedia.org/wikipedia/commons/7/72/Victoria_Street_Edinburgh.jpg"
   },
   {
     clue: `7) For the final stop, climb a hill at the city's edge,<br>
@@ -150,7 +150,7 @@ const puzzleData = [
            Reflect on your adventure, hand in hand.`,
     answer: "calton hill",
     hint: "Hill with an unfinished monument (resembles Greek columns) offering panoramic views.",
-    image: "https://example.com/calton-hill.jpg" // Replace with actual image URL
+    image: "https://upload.wikimedia.org/wikipedia/commons/3/30/Calton_Hill_from_Holyrood_Park.jpg"
   }
 ];
 
