@@ -85,16 +85,30 @@
 <script>
 const puzzleData = [
   {
-    clue: `Hi Chinmay! Welcome to Scotland!<br>What a place to celebrate your special milestones! Congratulations on your birthday and first wedding anniversary! Hope you enjoy this present by Mrs. Chaudhary:)<br>
-          1) Begin on a historic street once traveled by royalty.<br>
+    // STOP 1: Heart of Midlothian
+    clue: `Hi Chinmay! Welcome to Scotland!<br>
+           What a place to celebrate your special milestones! 
+           Congratulations on your birthday and first wedding anniversary! 
+           Hope you enjoy this present by Mrs. Chaudhary:)<br><br>
+           1) Begin on a historic street once traveled by royalty.<br>
            On the ground you'll spot a heart set in stone.<br>
            Local lore says some spit for good luck, if you believe.<br>
            Find this symbol of old tales, then we'll leave.`,
     answer: "heart of midlothian",
-    hint: "Some people spit on it for good luck; it's right on the Royal Mile."
+    hint: "Some people spit on it for luck; it's on the Royal Mile."
   },
   {
-    clue: `2) Near that heart stands a grand building crowned with stone,<br>
+    // STOP 2: City Chambers (J.K. Rowling's handprints)
+    clue: `2) Just off that busy Mile stands a courtyard of fame,<br>
+           Where notable names left impressions that remain.<br>
+           Seek the handprints of a writer known far and wide,<br>
+           For conjuring a young wizard who soared with pride.`,
+    answer: "city chambers",
+    hint: "You'll find J.K. Rowling's handprints in a courtyard near the municipal buildings."
+  },
+  {
+    // STOP 3: St Giles' Cathedral
+    clue: `3) Near that heart stands a grand building crowned with stone,<br>
            A place of worship, music, and centuries well-known.<br>
            Step inside if you like to admire its art,<br>
            Then seek a faithful friend for the next part.`,
@@ -102,47 +116,96 @@ const puzzleData = [
     hint: "It has a unique 'crown' on top and is a famous cathedral on the Royal Mile."
   },
   {
-    clue: `3) A little statue of a loyal friend, perched near a graveyard gate,<br>
+    // STOP 4: The Elephant House
+    clue: `4) A cozy café with elephants in mind,<br>
+           Where scribbles of wizards were once designed.<br>
+           Overlooking the castle from a humble seat,<br>
+           Find the place many fans call a writing retreat.`,
+    answer: "the elephant house",
+    hint: "Often called the 'birthplace of Harry Potter'; it has 'elephant' in its name."
+  },
+  {
+    // STOP 5: Greyfriars Bobby
+    clue: `5) A little statue of a loyal friend, perched near a graveyard gate,<br>
            Forever faithful to his master, in legend he did wait.<br>
-           Tradition says his shiny nose might bring some luck,<br>
-           Pat the pup gently, then off to a former market for your next struck.`,
+           Tradition says his shiny nose might bring you luck,<br>
+           Pat the pup gently, then continue on your next track.`,
     answer: "greyfriars bobby",
     hint: "Bronze statue of a dog with a polished nose."
   },
   {
-    clue: `4) Shops and pubs line this lively square beneath a fortress high,<br>
-           Once a place of gathering—some grim stories in times gone by.<br>
-           Now it bustles with laughter, food, and song,<br>
-           Take a break if you wish, then climb to the fortress so strong.`,
-    answer: "grassmarket",
-    hint: "Open area below the castle, historically a marketplace."
+    // STOP 6: Greyfriars Kirkyard (Harry Potter tombstones)
+    clue: `6) Wander into the graveyard behind this loyal dog’s domain,<br>
+           Where names on tombstones might sound strangely arcane.<br>
+           Legend says a ‘Riddell’ and more can be found,<br>
+           Fueling tales of a boy wizard revered all around.`,
+    answer: "greyfriars kirkyard",
+    hint: "Look for Thomas 'Riddell' and other name inspirations on the old tombstones."
   },
   {
-    clue: `5) A mighty stronghold stands upon volcanic rock,<br>
+    // STOP 7: George Heriot's School (Hogwarts inspiration)
+    clue: `7) Gaze across the graveyard's wall to a scholastic sight,<br>
+           A grand building of towers that might channel Hogwarts’ might.<br>
+           With four imposing spires near these hallowed grounds,<br>
+           This old school’s design set imaginations unbound.`,
+    answer: "george heriot's school",
+    hint: "An expensive private school often cited as inspiration for Hogwarts."
+  },
+  {
+    // STOP 8: Grassmarket
+    clue: `8) Shops and pubs line this lively square beneath a fortress high,<br>
+           Once a place of gathering—some grim stories in times gone by.<br>
+           Now it bustles with laughter, food, and song,<br>
+           Take a breather if you wish, then onward you march strong.`,
+    answer: "grassmarket",
+    hint: "Open area below the castle, historically a marketplace (and site of hangings)."
+  },
+  {
+    // STOP 9: Edinburgh Castle
+    clue: `9) A mighty stronghold stands upon volcanic rock,<br>
            Home to ancient regalia and a famous daily shock.<br>
            A cannon that fires when the clock strikes one,<br>
            Stand on its esplanade to see the city under the sun.`,
     answer: "edinburgh castle",
-    hint: "Iconic fortress with a One O'Clock Gun ritual."
+    hint: "Iconic fortress with a One O’Clock Gun ritual."
   },
   {
-    clue: `6) Descend to a curving street of vibrant hue,<br>
+    // STOP 10: Victoria Street (Diagon Alley inspiration)
+    clue: `10) Descend to a curving street of vibrant hue,<br>
            Rumored to inspire a wizard’s alley known by few.<br>
            Colorful facades and quirky shops, a place of delight,<br>
-           Snap a picture, then on to the next scenic sight.`,
+           Snap a picture, then onward to your next flight.`,
     answer: "victoria street",
-    hint: "Brightly painted street rumored to be the inspiration for Diagon Alley."
+    hint: "A bright, curving street said to inspire Diagon Alley."
   },
   {
-    clue: `7) For the final stop, climb a hill at the city's edge,<br>
+    // STOP 11: Spoon (formerly Nicholson's Café)
+    clue: `11) A café once known by a different name,<br>
+           Where notes of magic were part of its claim.<br>
+           Renamed for a simple utensil you hold to eat,<br>
+           This is another spot for a cozy writing seat.`,
+    answer: "spoon",
+    hint: "Once Nicholson's Café, near Nicholson Street."
+  },
+  {
+    // STOP 12: The Balmoral (Where Rowling finished HP7)
+    clue: `12) A grand hotel near the station with a towering clock face,<br>
+           Where final pages of a wizard’s tale found their place.<br>
+           The author marked a bust to celebrate 'The End,’<br>
+           Seek this stately landmark, a city icon and friend.`,
+    answer: "the balmoral",
+    hint: "Iconic hotel with a tall clock tower, where Rowling finished 'Deathly Hallows.'"
+  },
+  {
+    // STOP 13: Calton Hill
+    clue: `13) For the final stop, climb a hill at the city's edge,<br>
            Where monuments stand—one famously half a pledge.<br>
            Gaze at skyline and sea from this vantage so grand,<br>
            Reflect on your adventure, hand in hand.`,
     answer: "calton hill",
-    hint: "Hill with an unfinished monument (resembles Greek columns) offering panoramic views."
+    hint: "Hill with an unfinished monument (Greek columns) offering panoramic views."
   }
 ];
-
 let currentClueIndex = 0;
 
 function renderClue(index) {
