@@ -25,6 +25,7 @@
       border: 2px solid #eee;
       opacity: 0;
       animation: initialSpellAppear 2s ease-out forwards;
+      position: relative;
     }
     @keyframes initialSpellAppear {
       0% {
@@ -55,6 +56,22 @@
         transform: scale(0.5);
         opacity: 0;
       }
+    }
+    @keyframes sparkle {
+      0%, 100% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+    .sparkle {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: gold;
+      border-radius: 50%;
+      animation: sparkle 1s infinite;
     }
     h1, h2 {
       text-align: center;
@@ -242,6 +259,25 @@ const puzzleData = [
 ];
 let currentClueIndex = 0;
 
+function createSparkles() {
+  const sparkleContainer = document.createElement('div');
+  sparkleContainer.classList.add('sparkle-container');
+  document.body.appendChild(sparkleContainer);
+
+  for (let i = 0; i < 50; i++) {
+    const sparkle = document.createElement('div');
+    sparkle.classList.add('sparkle');
+    sparkle.style.left = `${Math.random() * 100}%`;
+    sparkle.style.top = `${Math.random() * 100}%`;
+    sparkle.style.animationDelay = `${Math.random() * 1.5}s`;
+    sparkleContainer.appendChild(sparkle);
+  }
+
+  setTimeout(() => {
+    sparkleContainer.remove();
+  }, 2000);
+}
+
 function renderClue(index) {
   if (index >= puzzleData.length) {
     document.getElementById('app').innerHTML = `
@@ -295,6 +331,7 @@ function renderClue(index) {
   }
 }
 
+createSparkles();
 renderClue(currentClueIndex);
 </script>
 
