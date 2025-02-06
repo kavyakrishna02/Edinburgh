@@ -378,9 +378,9 @@ function checkAnswer() {
   }
 }
 
-setTimeout(() => {
-  startHunt();
-}, 2000);
+window.onload = function() {
+  setTimeout(startHunt, 2000);
+};
 </script>
 
 </body>
