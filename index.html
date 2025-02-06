@@ -15,7 +15,7 @@
       height: 100vh;
       overflow: hidden;
     }
-    .container, .intro-container {
+    .container, .intro-container, .wand-container {
       background: #fff;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
@@ -26,6 +26,14 @@
       opacity: 0;
       animation: initialSpellAppear 2s ease-out forwards;
       position: relative;
+      text-align: center;
+    }
+    .wand-container {
+      font-size: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
     @keyframes initialSpellAppear {
       0% {
@@ -69,10 +77,7 @@
     }
     .sparkle {
       position: absolute;
-      width: 20px;
-      height: 20px;
-      background: radial-gradient(circle, rgba(255,215,0,1) 0%, rgba(255,215,0,0.5) 70%, rgba(255,215,0,0) 100%);
-      border-radius: 50%;
+      font-size: 20px;
       animation: sparkle 1.5s infinite;
     }
     h1, h2 {
@@ -142,7 +147,11 @@
 </head>
 <body>
 
-<div class="intro-container">
+<div class="wand-container">
+  🪄
+</div>
+
+<div class="intro-container" style="display:none;">
   <h1>Welcome to the Edinburgh and Harry Potter Treasure Hunt!</h1>
   <p>Please recite this spell to begin your magical journey:</p>
   <blockquote>
@@ -300,6 +309,7 @@ function createSparkles() {
   for (let i = 0; i < 50; i++) {
     const sparkle = document.createElement('div');
     sparkle.classList.add('sparkle');
+    sparkle.textContent = '✨';
     sparkle.style.left = `${Math.random() * 100}%`;
     sparkle.style.top = `${Math.random() * 100}%`;
     sparkle.style.animationDelay = `${Math.random() * 1.5}s`;
@@ -312,6 +322,15 @@ function createSparkles() {
 }
 
 function startHunt() {
+  document.querySelector('.wand-container').style.animation = 'spellDisappear 1s ease-out';
+  setTimeout(() => {
+    document.querySelector('.wand-container').style.display = 'none';
+    document.querySelector('.intro-container').style.display = 'block';
+    document.querySelector('.intro-container').style.animation = 'spellAppear 1s ease-out';
+  }, 1000);
+}
+
+function beginClues() {
   document.querySelector('.intro-container').style.animation = 'spellDisappear 1s ease-out';
   setTimeout(() => {
     document.querySelector('.intro-container').style.display = 'none';
@@ -375,7 +394,9 @@ function renderClue(index) {
   }
 }
 
-createSparkles();
+setTimeout(() => {
+  startHunt();
+}, 2000);
 </script>
 
 </body>
