@@ -15,7 +15,7 @@
       height: 100vh;
       overflow: hidden;
     }
-    .container {
+    .container, .intro-container {
       background: #fff;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
@@ -69,8 +69,8 @@
     }
     .sparkle {
       position: absolute;
-      width: 10px;
-      height: 10px;
+      width: 20px;
+      height: 20px;
       background: radial-gradient(circle, rgba(255,215,0,1) 0%, rgba(255,215,0,0.5) 70%, rgba(255,215,0,0) 100%);
       border-radius: 50%;
       animation: sparkle 1.5s infinite;
@@ -120,6 +120,21 @@
     .submit-btn:hover {
       background-color: #0056b3;
     }
+    .start-btn {
+      display: block;
+      margin: 20px auto 0 auto;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    .start-btn:hover {
+      background-color: #218838;
+    }
     .feedback {
       margin-top: 10px;
     }
@@ -127,7 +142,23 @@
 </head>
 <body>
 
-<div class="container">
+<div class="intro-container">
+  <h1>Welcome to the Edinburgh and Harry Potter Treasure Hunt!</h1>
+  <p>Please recite this spell to begin your magical journey:</p>
+  <blockquote>
+    "Amor Aeternum, hear my plea:<br>
+    A bond of love for him and me.<br>
+    With warmth in hearts and joyous cheer,<br>
+    Our love grows stronger year by year.<br>
+    As petals fall and candles burn bright,<br>
+    May trust and kindness guide our light.<br>
+    No force, no chains—free will we keep,<br>
+    Our love so grand, forever we’ll reap."
+  </blockquote>
+  <button class="start-btn" onclick="startHunt()">Start the Hunt</button>
+</div>
+
+<div class="container" style="display:none;">
   <h1>Edinburgh and Harry Potter Treasure Hunt 🪄🪄🪄🪄</h1>
     <h2>For Mr. and Mrs. Chaudhary 👩🏻‍❤️‍💋‍👨🏻</h2>
   <p style="text-align:center;">Solve each clue in order. Type the correct answer to reveal the next clue!</p>
@@ -280,6 +311,17 @@ function createSparkles() {
   }, 2000);
 }
 
+function startHunt() {
+  document.querySelector('.intro-container').style.animation = 'spellDisappear 1s ease-out';
+  setTimeout(() => {
+    document.querySelector('.intro-container').style.display = 'none';
+    document.querySelector('.container').style.display = 'block';
+    document.querySelector('.container').style.animation = 'spellAppear 1s ease-out';
+    createSparkles();
+    renderClue(currentClueIndex);
+  }, 1000);
+}
+
 function renderClue(index) {
   if (index >= puzzleData.length) {
     document.getElementById('app').innerHTML = `
@@ -334,7 +376,6 @@ function renderClue(index) {
 }
 
 createSparkles();
-renderClue(currentClueIndex);
 </script>
 
 </body>
