@@ -69,10 +69,7 @@
     }
     .sparkle {
       position: absolute;
-      width: 10px;
-      height: 10px;
-      background: radial-gradient(circle, rgba(255,215,0,1) 0%, rgba(255,215,0,0.5) 70%, rgba(255,215,0,0) 100%);
-      border-radius: 50%;
+      font-size: 20px;
       animation: sparkle 1.5s infinite;
     }
     h1, h2 {
@@ -138,7 +135,6 @@
 <script>
 const puzzleData = [
   {
-    // STOP 1: Heart of Midlothian
     clue: `Hi Chinmay! Welcome to Scotland!<br>
            What a place to celebrate your special milestones! 
            Congratulations on your birthday and first wedding anniversary! 
@@ -151,7 +147,6 @@ const puzzleData = [
     hint: "Some people spit on it for luck; it's on the Royal Mile."
   },
   {
-    // STOP 2: City Chambers (J.K. Rowling's handprints)
     clue: `2) Just off that busy Mile stands a courtyard of fame,<br>
            Where notable names left impressions that remain.<br>
            Seek the handprints of a writer known far and wide,<br>
@@ -160,7 +155,6 @@ const puzzleData = [
     hint: "You'll find J.K. Rowling's handprints in a courtyard near the municipal buildings."
   },
   {
-    // STOP 3: St Giles' Cathedral
     clue: `3) Near that heart stands a grand building crowned with stone,<br>
            A place of worship, music, and centuries well-known.<br>
            Step inside if you like to admire its art,<br>
@@ -169,7 +163,6 @@ const puzzleData = [
     hint: "It has a unique 'crown' on top and is a famous cathedral on the Royal Mile."
   },
   {
-    // STOP 4: The Elephant House
     clue: `4) A cozy café with elephants in mind,<br>
            Where scribbles of wizards were once designed.<br>
            Overlooking the castle from a humble seat,<br>
@@ -178,7 +171,6 @@ const puzzleData = [
     hint: "Often called the 'birthplace of Harry Potter'; it has 'elephant' in its name."
   },
   {
-    // STOP 5: Greyfriars Bobby
     clue: `5) A little statue of a loyal friend, perched near a graveyard gate,<br>
            Forever faithful to his master, in legend he did wait.<br>
            Tradition says his shiny nose might bring you luck,<br>
@@ -187,7 +179,6 @@ const puzzleData = [
     hint: "Bronze statue of a dog with a polished nose."
   },
   {
-    // STOP 6: Greyfriars Kirkyard (Harry Potter tombstones)
     clue: `6) Wander into the graveyard behind this loyal dog’s domain,<br>
            Where names on tombstones might sound strangely arcane.<br>
            Legend says a ‘Riddell’ and more can be found,<br>
@@ -196,7 +187,6 @@ const puzzleData = [
     hint: "Look for Thomas 'Riddell' and other name inspirations on the old tombstones."
   },
   {
-    // STOP 7: George Heriot's School (Hogwarts inspiration)
     clue: `7) Gaze across the graveyard's wall to a scholastic sight,<br>
            A grand building of towers that might channel Hogwarts’ might.<br>
            With four imposing spires near these hallowed grounds,<br>
@@ -205,7 +195,6 @@ const puzzleData = [
     hint: "An expensive private school often cited as inspiration for Hogwarts."
   },
   {
-    // STOP 8: Grassmarket
     clue: `8) Shops and pubs line this lively square beneath a fortress high,<br>
            Once a place of gathering—some grim stories in times gone by.<br>
            Now it bustles with laughter, food, and song,<br>
@@ -214,7 +203,6 @@ const puzzleData = [
     hint: "Open area below the castle, historically a marketplace (and site of hangings)."
   },
   {
-    // STOP 9: Edinburgh Castle
     clue: `9) A mighty stronghold stands upon volcanic rock,<br>
            Home to ancient regalia and a famous daily shock.<br>
            A cannon that fires when the clock strikes one,<br>
@@ -223,7 +211,6 @@ const puzzleData = [
     hint: "Iconic fortress with a One O’Clock Gun ritual."
   },
   {
-    // STOP 10: Victoria Street (Diagon Alley inspiration)
     clue: `10) Descend to a curving street of vibrant hue,<br>
            Rumored to inspire a wizard’s alley known by few.<br>
            Colorful facades and quirky shops, a place of delight,<br>
@@ -232,7 +219,6 @@ const puzzleData = [
     hint: "A bright, curving street said to inspire Diagon Alley."
   },
   {
-    // STOP 11: Spoon (formerly Nicholson's Café)
     clue: `11) A café once known by a different name,<br>
            Where notes of magic were part of its claim.<br>
            Renamed for a simple utensil you hold to eat,<br>
@@ -241,7 +227,6 @@ const puzzleData = [
     hint: "Once Nicholson's Café, near Nicholson Street."
   },
   {
-    // STOP 12: The Balmoral (Where Rowling finished HP7)
     clue: `12) A grand hotel near the station with a towering clock face,<br>
            Where final pages of a wizard’s tale found their place.<br>
            The author marked a bust to celebrate 'The End,’<br>
@@ -250,7 +235,6 @@ const puzzleData = [
     hint: "Iconic hotel with a tall clock tower, where Rowling finished 'Deathly Hallows.'"
   },
   {
-    // STOP 13: Calton Hill
     clue: `13) For the final stop, climb a hill at the city's edge,<br>
            Where monuments stand—one famously half a pledge.<br>
            Gaze at skyline and sea from this vantage so grand,<br>
@@ -269,6 +253,8 @@ function createSparkles() {
   for (let i = 0; i < 50; i++) {
     const sparkle = document.createElement('div');
     sparkle.classList.add('sparkle');
+    sparkle.textContent = '🪄';
+    sparkle.style.fontSize = '20px';
     sparkle.style.left = `${Math.random() * 100}%`;
     sparkle.style.top = `${Math.random() * 100}%`;
     sparkle.style.animationDelay = `${Math.random() * 1.5}s`;
