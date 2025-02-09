@@ -15,7 +15,7 @@
       height: 100vh;
       overflow: hidden;
     }
-    .container, .wand-container {
+    .container {
       background: #fff;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
@@ -23,18 +23,9 @@
       max-width: 600px;
       width: 100%;
       border: 2px solid #eee;
-      text-align: center;
-    }
-    .container {
       opacity: 0;
       animation: initialSpellAppear 2s ease-out forwards;
-      display: none;
-    }
-    .wand-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      position: relative;
     }
     @keyframes initialSpellAppear {
       0% {
@@ -66,20 +57,20 @@
         opacity: 0;
       }
     }
-    .wand-button {
-      font-size: 50px;
-      border: none;
-      background: none;
-      cursor: pointer;
-      animation: wandAppear 1.5s infinite;
-    }
-    @keyframes wandAppear {
+    @keyframes sparkle {
       0%, 100% {
         opacity: 0;
+        transform: scale(0.5);
       }
       50% {
         opacity: 1;
+        transform: scale(1);
       }
+    }
+    .sparkle {
+      position: absolute;
+      font-size: 20px;
+      animation: sparkle 1.5s infinite;
     }
     h1, h2 {
       text-align: center;
@@ -132,10 +123,6 @@
   </style>
 </head>
 <body>
-
-<div class="wand-container">
-  <button class="wand-button" onclick="startHunt()">🪄</button>
-</div>
 
 <div class="container">
   <h1>Edinburgh and Harry Potter Treasure Hunt 🪄🪄🪄🪄</h1>
@@ -258,17 +245,6 @@ const puzzleData = [
 ];
 let currentClueIndex = 0;
 
-function startHunt() {
-  document.querySelector('.wand-container').style.animation = 'spellDisappear 1s ease-out';
-  setTimeout(() => {
-    document.querySelector('.wand-container').style.display = 'none';
-    document.querySelector('.container').style.display = 'block';
-    document.querySelector('.container').style.animation = 'spellAppear 1s ease-out';
-    createSparkles();
-    renderClue(currentClueIndex);
-  }, 1000);
-}
-
 function createSparkles() {
   const sparkleContainer = document.createElement('div');
   sparkleContainer.classList.add('sparkle-container');
@@ -342,6 +318,9 @@ function renderClue(index) {
     }
   }
 }
+
+createSparkles();
+renderClue(currentClueIndex);
 </script>
 
 </body>
